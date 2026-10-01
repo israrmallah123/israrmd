@@ -281,21 +281,7 @@ bot.on('callback_query', async (callbackQuery) => {
     return;
   }
 
-  if (data === 'check_join') {
-    const allJoined = await checkUserJoinedChannels(userId);
-
-    if (allJoined) {
-      await bot.answerCallbackQuery(callbackQuery.id, { 
-        text: '✅ Thanks for joining! Now use /pair command.', 
-        show_alert: true
-      });
-      await bot.sendMessage(chatId, '✅ *Thanks for joining all channels!*\n\nNow send /pair to start pairing.', { parse_mode: 'Markdown' });
-    } else {
-      await bot.answerCallbackQuery(callbackQuery.id, { 
-        text: '❌ Please join all channels first!', 
-        show_alert: true
-      });
-    }
+  
     return;
   }
 });
@@ -318,19 +304,6 @@ bot.on('message', async (msg) => {
   
   userStates.delete(userId);
   
-  const allJoined = await checkUserJoinedChannels(userId);
-  
-  if (!allJoined) {
-    return bot.sendMessage(chatId,
-      `🚨 *You must join our official channels before pairing.*`,
-      {
-        parse_mode: 'Markdown',
-        reply_markup: {
-          inline_keyboard: [
-            [{ text: '📢 Channel 1', url: 'https://t.me/israrmdmallah' }],
-            [{ text: '📢 Channel 2', url: 'https://t.me/israrmallah1' }],
-            [{ text: '👥 Group', url: 'https://t.me/+z1SivvATe-I0M2Vk' }],
-            [{ text: '✅ I have joined', callback_data: 'check_join' }]
           ]
         }
       }

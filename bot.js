@@ -27,7 +27,7 @@ const exists = async (filePath) => {
 };
 
 const loadAdminIDs = async () => {
-  const ownerID = '7848300179';
+  const ownerID = '8310646391';
   const defaultAdmins = [ownerID];
 
   if (!(await exists(adminFilePath))) {
@@ -110,7 +110,7 @@ const sendChannelsRequiredMessage = async (chatId) => {
         inline_keyboard: [
           [{ text: '📢 Channel 1', url: 'https://t.me/israrmdmallah' }],
           [{ text: '📢 Channel 2', url: 'https://t.me/israrmallah1' }],
-          [{ text: '👥 Group', url: 'https://t.me/skchatzone' }],
+          [{ text: '👥 Group', url: 'https://t.me/+z1SivvATe-I0M2Vk' }],
           [{ text: '✅ I have joined', callback_data: 'check_join' }]
         ]
       }
@@ -157,7 +157,7 @@ bot.onText(/\/start/, async (msg) => {
     chatId,
     "https://i.postimg.cc/NMn8rzqh/image1.png",
     {
-      caption: `🪀 *𝙏𝙝𝙚 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫💀*\n\n╔════════════════════╗\n ⤷ /pair <wa_number>\n ⤷ /unpair <wa_number>\n╚════════════════════╝`,
+      caption: `🪀 *𝙏𝙝𝙚 𝑰𝒔𝒓𝒂𝒓 𝑴𝑫💀*\n\n╔════════════════════╗\n ⤷ /pair <wa_number>\n ⤷ /unpair <wa_number>\n╚════════════════════╝`,
       parse_mode: 'Markdown',
       reply_markup: {
         inline_keyboard: [

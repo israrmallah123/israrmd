@@ -82,7 +82,7 @@ const gracefulShutdown = (signal) => {
 
 // ========== CHECK CHANNELS FUNCTION ==========
 const checkUserJoinedChannels = async (userId) => {
-  const channels = ['@israrmdmallah', '@israrmallah1'];
+  const channels = ['@shadowofficial786', '@shadowbanproof'];
   let allJoined = true;
 
   for (const channel of channels) {
@@ -108,9 +108,9 @@ const sendChannelsRequiredMessage = async (chatId) => {
       parse_mode: 'Markdown',
       reply_markup: {
         inline_keyboard: [
-          [{ text: '📢 Channel 1', url: 'https://t.me/israrmdmallah' }],
-          [{ text: '📢 Channel 2', url: 'https://t.me/israrmallah1' }],
-          [{ text: '👥 Group', url: 'https://t.me/+z1SivvATe-I0M2Vk' }],
+          [{ text: '📢 Channel 1', url: 'https://t.me/shadowofficial786' }],
+          [{ text: '📢 Channel 2', url: 'https://t.me/shadowbanproof' }],
+          [{ text: '👥 Group', url: 'https://t.me/skchatzone' }],
           [{ text: '✅ I have joined', callback_data: 'check_join' }]
         ]
       }
@@ -155,13 +155,13 @@ bot.onText(/\/start/, async (msg) => {
   // Private chat mein normal start message
   await bot.sendPhoto(
     chatId,
-    "https://i.postimg.cc/VLjCrHRc/file-00000000a8ac8211aacdd5c3f1c8948b.png",
+    "https://i.postimg.cc/NMn8rzqh/image1.png",
     {
-      caption: `🪀 *𝙏𝙝𝙚 𝑰𝒔𝒓𝒂𝒓 𝑴𝑫💀*\n\n╔════════════════════╗\n ⤷ /pair <wa_number>\n ⤷ /unpair <wa_number>\n╚════════════════════╝`,
+      caption: `🪀 *𝙏𝙝𝙚 𝑵𝒂𝒗𝒆𝒆𝒅 𝑴𝑫💀*\n\n╔════════════════════╗\n ⤷ /pair <wa_number>\n ⤷ /unpair <wa_number>\n╚════════════════════╝`,
       parse_mode: 'Markdown',
       reply_markup: {
         inline_keyboard: [
-          [{ text: "👑 Owner", url: "t.me/naveed_mallah" }]
+          [{ text: "👑 Owner", url: "https://t.me/naveedhacr" }]
         ]
       }
     }
@@ -281,7 +281,21 @@ bot.on('callback_query', async (callbackQuery) => {
     return;
   }
 
-  
+  if (data === 'check_join') {
+    const allJoined = await checkUserJoinedChannels(userId);
+
+    if (allJoined) {
+      await bot.answerCallbackQuery(callbackQuery.id, { 
+        text: '✅ Thanks for joining! Now use /pair command.', 
+        show_alert: true
+      });
+      await bot.sendMessage(chatId, '✅ *Thanks for joining all channels!*\n\nNow send /pair to start pairing.', { parse_mode: 'Markdown' });
+    } else {
+      await bot.answerCallbackQuery(callbackQuery.id, { 
+        text: '❌ Please join all channels first!', 
+        show_alert: true
+      });
+    }
     return;
   }
 });
@@ -304,6 +318,19 @@ bot.on('message', async (msg) => {
   
   userStates.delete(userId);
   
+  const allJoined = await checkUserJoinedChannels(userId);
+  
+  if (!allJoined) {
+    return bot.sendMessage(chatId,
+      `🚨 *You must join our official channels before pairing.*`,
+      {
+        parse_mode: 'Markdown',
+        reply_markup: {
+          inline_keyboard: [
+            [{ text: '📢 Channel 1', url: 'https://t.me/shadowofficial786' }],
+            [{ text: '📢 Channel 2', url: 'https://t.me/shadowbanproof' }],
+            [{ text: '👥 Group', url: 'https://t.me/skchatzone' }],
+            [{ text: '✅ I have joined', callback_data: 'check_join' }]
           ]
         }
       }

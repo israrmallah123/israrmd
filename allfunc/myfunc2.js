@@ -1,6 +1,6 @@
 /**
-   * Create By SILVERxTALHA.
-   * Contact Me on wa.me/923104609886
+   * Create By 𝐍𝐀𝐕𝐄𝐄𝐃
+   * Contact Me on wa.me/923023991670
 */
 
 var __importDefault = (this && this.__importDefault) || function (mod) {

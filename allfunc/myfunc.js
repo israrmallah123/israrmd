@@ -1,6 +1,6 @@
 /**
-   * Create By ༒︎ ISRAR ༒︎
-   * Contact Me on wa.me/923005763534
+   * Create By ༒︎ 𝑺𝑯𝑨𝑫𝑶𝑾 ༒︎
+   * Contact Me on wa.me/923271054080
 */
 
 const fetch = require('node-fetch')
